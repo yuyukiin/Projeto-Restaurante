@@ -105,4 +105,43 @@ public class ProdutoDao implements ProdutoRepository{
         }
         return null;
     }
+    
+    public Produto carregarNome(String nome) {
+        String sql = "SELECT * FROM Produto WHERE nome = ?";
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Produto(
+                            rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getDouble("preco"),
+                            rs.getInt("quantidade"),
+                            rs.getString("categoria")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int idPorNome(String nome) {
+        String sql = "SELECT id FROM Produto WHERE nome = ?";
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");  // Retorna o ID encontrado
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Retorna -1 se não encontrar o produto
+    }
+
 }

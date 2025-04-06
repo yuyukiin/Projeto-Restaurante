@@ -30,6 +30,10 @@ public class Produto {
         this.categoria = categoria;
     }
 
+    public Produto() {
+        
+    }
+
     public String getCategoria() {
         return categoria;
     }
@@ -69,9 +73,12 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+            this.preco = preco;
     }
     
-    
+    @Override
+    public String toString() {
+        return nome; // Exibe apenas o nome no JComboBox
+    }
     
 }
