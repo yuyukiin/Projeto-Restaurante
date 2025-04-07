@@ -1,32 +1,35 @@
-# 📦 Cadastro de Produto com Interface Gráfica (Java + CSV)
+# 🍽️ Sistema de Pedidos com Interface Gráfica (Java Swing + MySQL)
 
-Este projeto é um exemplo didático utilizado na disciplina de **Projeto de Software**, com o objetivo de demonstrar como diagramas UML (como o **Diagrama de Classes** e o **Diagrama de Sequência**) se relacionam com a implementação prática de um sistema em Java.
+Este projeto foi desenvolvido como parte da disciplina de **Projeto de Software**, com o objetivo de demonstrar a aplicação prática de **diagramas UML** — incluindo **Diagrama de Classes** e **Diagrama de Sequência** — na implementação de um sistema para gerenciamento de pedidos em um restaurante.
 
-A funcionalidade central é o **Cadastro de Produtos**, realizado por meio de uma **interface gráfica com Swing** e armazenamento em um arquivo **CSV**, permitindo leitura e persistência de dados de forma simples.
+A aplicação utiliza **Java** com **interface gráfica (Swing)** e realiza a persistência dos dados em um banco de dados **MySQL**.
 
 ---
 
-## ✨ Funcionalidade Principal
+## 🛠️ Funcionalidades
 
-Funcionalidade disponível no sistema:
+### 👨‍💼 Administrador
+- Cadastrar Itens
+- Editar Itens
+- Excluir Itens
+- Visualizar Pedidos
 
-- Cadastro de produtos com os seguintes campos:
-  - Nome
-  - Preço
-  - Quantidade
-  - Categoria
-- Armazenamento e persistência dos dados em **arquivo CSV**
-- Interface gráfica amigável e funcional utilizando **Java Swing**
+### 🧑‍🍽️ Cliente
+- Adicionar Itens ao Carrinho
+- Realizar Pedidos
+- Finalizar Pedidos
+- Remover Itens do Carrinho
 
 ---
 
 ## 🧱 Estrutura do Projeto
 
-Abaixo estão os principais componentes que compõem a arquitetura do projeto:
+- `Item.java`: Classe que representa os produtos disponíveis no sistema.
+- `Carrinho.java`: Gerencia os itens selecionados pelos clientes.
+- `Pedido.java`: Representa os pedidos realizados.
+- `ProdutoDAO.java`: Responsável pelas operações de acesso aos dados no banco MySQL.
+- `AdministradorView.java` e `ClienteView.java`: Interfaces gráficas principais para cada tipo de usuário.
 
-- `Produto.java`: Classe modelo (Model) que representa um produto no sistema
-- `ProdutoRepository.java`: Classe responsável por salvar e recuperar os produtos no arquivo CSV
-- `ProdutoForm.java`: Interface gráfica para entrada dos dados (View + Controller)
 
 > 💡 Obs: Algumas nomenclaturas podem variar no seu código (como `PedidoForm`), verifique se está de acordo com o nome real dos arquivos.
 
@@ -68,10 +71,10 @@ Abaixo estão os principais componentes que compõem a arquitetura do projeto:
   ![DS - Adicionar Pedido Carrinho](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Adicionar%20Pedido%20Carrinho.png)
 
 - **Realizar Pedido**  
-  ![DS - Realizar Pedido]()
+  ![DS - Realizar Pedido](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Realizar%20Pedido.png)
 
 - **Remover Produto do Carrinho**  
-  ![DS - Remover Produto do Carrinho]()
+  ![DS - Remover Produto do Carrinho](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/RetirarItem.png)
 
 - **Finalizar Pedido**  
   ![DS - Finalizar Pedido](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Realizar%20Pedido.png)
@@ -100,19 +103,6 @@ Para executar o sistema localmente, siga os passos abaixo:
 
 ---
 
-## 🗂️ Descrição dos Arquivos
-
-| Arquivo                   | Descrição                                                                 |
-|--------------------------|---------------------------------------------------------------------------|
-| `Produto.java`           | Classe modelo que representa um produto no sistema                        |
-| `ProdutoForm.java`       | Interface gráfica onde os dados do produto são inseridos                 |
-| `ProdutoRepository.java` | Classe de acesso a dados, responsável por ler e escrever no arquivo CSV   |
-| `produtos.csv`           | Arquivo de texto onde os produtos cadastrados são armazenados             |
-| `LICENSE`                | Licença do projeto (MIT)                                                  |
-| `README.md`              | Este arquivo, com explicações, diagramas e instruções de uso              |
-
----
-
 ## 📌 Casos de Uso
 
 > Diagrama de caso de uso representando as interações principais dos usuários com o sistema.
@@ -136,13 +126,16 @@ Para executar o sistema localmente, siga os passos abaixo:
 > Os demais casos descritivos estão no link a seguir: (https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20Gerais/Documentação.md)
 
 ---
-
-## 👤 Autor
+## 👤 Autores
 
 **Aluno:** Yuri Alexander Costa Machado  
-**Curso:** Ciência da Computação – Universidade Franciscana (UFN)
-
+**Curso:** Ciência da Computação – Universidade Franciscana (UFN)  
 📧 Email: yuricostamachado7@gmail.com  
 🔗 GitHub: [@Yuyukiin](https://github.com/Yuyukiin)
+
+**Aluno:** Pedro Henrique de Avila Daroda  
+**Curso:** Ciência da Computação – Universidade Franciscana (UFN)  
+🔗 GitHub: [@pedr0xh](https://github.com/pedr0xh)
+
 
 ---
