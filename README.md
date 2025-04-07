@@ -46,18 +46,63 @@ Excluir Produto
 
 ## ▶️ Como Executar
 
-1. Clone este repositório:
+### 🔁 1. Clone o repositório
+
+```bash
+git clone https://github.com/pedr0xh/Projeto-Restaurante/tree/main
+```
+
+---
+
+### 💻 2. Compile os arquivos `.java`
+
+Para compilar todos os arquivos Java (certifique-se de estar na raiz do projeto):
+
+```bash
+javac */*.java *.java
+```
+
+---
+
+## 🧑‍🍳 Execução para Cliente (interface Carrinho)
+
+Se você deseja **usar como cliente para fazer pedidos**:
+
+1. **Abra o terminal** e rode o **servidor de pedidos**:
+
    ```bash
-   git clone https://github.com/seu-usuario/cadastro-produto-java.git
+   java dao.ServidorPedido
    ```
-2. Compile os arquivos `.java`:
-   ```bash
-   javac *.java
-   ```
-3. Execute a interface gráfica:
-   ```bash
-   java ProdutoForm
-   ```
+
+2. **A interface gráfica do carrinho será aberta automaticamente** ao conectar um cliente.
+
+> ⚠️ Certifique-se de que a porta `5000` esteja liberada em seu sistema.
+
+---
+
+## 🔐 Execução para Administrador
+
+Se você é **administrador**, pode:
+
+### ➕ Cadastrar produtos:
+
+```bash
+java trabrestaurante.CadastrarProduto
+```
+
+### ✏️ Alterar produtos existentes:
+
+```bash
+java trabrestaurante.AlterarProduto
+```
+
+---
+
+## 📝 Observações
+
+- O projeto usa **Java Swing** para a interface gráfica.
+- Certifique-se de ter o **Java JDK 8 ou superior** instalado.
+- Caso haja erros de conexão, verifique se o **servidor** está rodando antes de abrir a interface gráfica do cliente.
 
 ---
 
@@ -137,3 +182,9 @@ Curso de Ciência da Computação – Universidade Franciscana (UFN)
 
 📧 E-mail: yuricostamachado7@gmail.com  
 🔗 GitHub: [@Yuyukiin](https://github.com/Yuyukiin)
+
+**Aluno: Pedro Henrique de Avila Daroda**  
+Curso de Ciência da Computação – Universidade Franciscana (UFN)
+
+📧 E-mail: podesdarodas25@gmail.com  
+🔗 GitHub: [@Pedr0xh](https://github.com/Pedr0xh)
