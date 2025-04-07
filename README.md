@@ -137,3 +137,9 @@ Curso de Ciência da Computação – Universidade Franciscana (UFN)
 
 📧 E-mail: yuricostamachado7@gmail.com  
 🔗 GitHub: [@Yuyukiin](https://github.com/Yuyukiin)
+
+**Aluno: Pedro Henrique de Avila Daroda**  
+Curso de Ciência da Computação – Universidade Franciscana (UFN)
+
+📧 E-mail: podesdarodas25@gmail.com  
+🔗 GitHub: [@Pedr0xh](https://github.com/Pedr0xh)
