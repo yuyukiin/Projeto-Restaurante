@@ -67,8 +67,15 @@ Abaixo estão os principais componentes que compõem a arquitetura do projeto:
 - **Adicionar Pedido ao Carrinho**  
   ![DS - Adicionar Pedido Carrinho](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Adicionar%20Pedido%20Carrinho.png)
 
+- **Realizar Pedido**  
+  ![DS - Realizar Pedido]()
+
+- **Remover Produto do Carrinho**  
+  ![DS - Remover Produto do Carrinho]()
+
 - **Finalizar Pedido**  
   ![DS - Finalizar Pedido](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Realizar%20Pedido.png)
+
 
 ---
 
