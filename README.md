@@ -1,6 +1,9 @@
-# Projeto Restaurante
 
-breve explicação como fiz
+# Cadastro de Produto com Interface Gráfica (Java + CSV)
+
+Este projeto é um exemplo didático utilizado na disciplina de **Projeto de Software**, com o objetivo de demonstrar a interação entre o **Diagrama de Classes** e o **Diagrama de Sequência**.
+
+A funcionalidade implementada é o **Cadastro de Produtos**, onde os dados são inseridos por meio de uma **interface gráfica (Swing)** e armazenados em um arquivo **CSV**.
 
 ---
 
@@ -27,20 +30,36 @@ breve explicação como fiz
 ## 📘 Diagrama de Classes
 
 ### Astah
+# ADM
+![C - ADM](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20Gerais/Diagrama%20de%20classe.png)
 
-![C - Cadastro de Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20Gerais/Diagrama%20de%20classe.png)
+# Cliente
+![C - Cliente](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Diagrama%20de%20Classe%20Cliente.png)
+
 
 ---
 
 ## 🔄 Diagrama de Sequência
 
 ### Astah  
+
+# ADM
 Cadastro de Produto  
 ![DS - Cadastro de Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Cadastro%20Pedido.png)  
 Alterar Produto  
 ![DS - Alterar Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Alterar%20Pedido.png)  
 Excluir Produto  
 ![DS - Excluir Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Excluir%20Pedido.png)
+Ver Pedidos
+![DS - Ver Pedidos](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Ver%20Pedidos.png)
+
+
+# Cliente
+Adicionar Pedido Carrinho
+![DS - Adicionar Pedido Carrinho](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Adicionar%20Pedido%20Carrinho.png)  
+
+Finalizar Pedido
+![DS - Finalizar Pedido](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Realizar%20Pedido.png)  
 
 ---
 
@@ -61,33 +80,6 @@ Excluir Produto
 
 ---
 
-## 🧠 Objetivos Didáticos
-
-breve explicação
-
----
-
-## 📂 Organização dos Arquivos
-
-```
-CadastroProdutoCSV/
-├── Projeto/
-│   ├── src/
-│   │   └── main/
-│   │       └── java/
-│   │           └── com/
-│   │               └── mycompany/
-│   │                   └── cadastroproduto/
-│   │                       ├── Produto.java
-│   │                       ├── ProdutoForm.java
-│   │                       └── ProdutoRepository.java
-│   └── produtos.csv
-├── LICENSE
-└── README.md
-```
-
----
-
 ### 🗂️ Descrição dos Diretórios e Arquivos
 
 - **`Produto.java`**: Classe que representa o modelo de dados.
@@ -98,29 +90,11 @@ CadastroProdutoCSV/
 - **`README.md`**: Este arquivo com instruções e explicações do projeto.
 
 ---
-
-## 🧩 Desafio
-
-Como exercício complementar, **projete e implemente as demais funcionalidades do CRUD (Create, Read, Update, Delete)** para produtos:
-
-- 📖 **Listar Produtos**: Leia e exiba todos os produtos cadastrados no CSV.
-- ✏️ **Atualizar Produto**: Permita alterar as informações de um produto existente.
-- ❌ **Excluir Produto**: Implemente uma forma de apagar um produto do CSV.
-
-> 💡 Lembre-se de adaptar o repositório e a interface gráfica para essas operações, sempre mantendo a separação entre lógica de apresentação e acesso a dados.
-
----
-
-## 📄 Licença
-
-Este projeto está licenciado sob os termos da licença MIT.  
-Consulte o arquivo [LICENSE](LICENSE) para mais informações.
-
 ---
 
 ## 📌 Casos de Uso
 
-<!-- Adicione aqui a descrição detalhada dos casos de uso -->
+![DS - Excluir Produto](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Diagrama%20de%20Caso%20de%20Uso.jpeg)
 
 ---
 
