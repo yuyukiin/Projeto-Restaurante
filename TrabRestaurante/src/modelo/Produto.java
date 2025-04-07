@@ -15,12 +15,21 @@ public class Produto {
     private double  preco;
     private String categoria;
     private int id;
+    private int quantidadeBanco;
 
     public Produto(int quantidade, String nome, double preco, String categoria) {
         this.quantidade = quantidade;
         this.nome = nome;
         this.preco = preco;
         this.categoria = categoria;
+    }
+
+    public int getQuantidadeBanco() {
+        return quantidadeBanco;
+    }
+
+    public void setQuantidadeBanco(int quantidadeBanco) {
+        this.quantidadeBanco = quantidadeBanco;
     }
     public Produto(int id, String nome, double preco, int quantidade, String categoria) {
         this.id = id;

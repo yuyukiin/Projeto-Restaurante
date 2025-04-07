@@ -17,7 +17,8 @@ import java.sql.Statement;
  * @author laboratorio
  */
 public class ProdutoDao implements ProdutoRepository{
-
+    
+    private ArrayList<Produto> produtos = new ArrayList<>();
     @Override
     public void inserir(Produto produto) {
         String sql = "INSERT INTO Produto (nome, preco, quantidade, categoria) VALUES (?, ?, ?, ?)";
@@ -143,5 +144,43 @@ public class ProdutoDao implements ProdutoRepository{
         }
         return -1; // Retorna -1 se não encontrar o produto
     }
+    public Produto buscarPorNome(String nome) {
+    try (Connection conn = Conexao.conectar()) {
+        String sql = "SELECT * FROM Produto WHERE nome = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, nome);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            Produto produto = new Produto();
+            produto.setNome(rs.getString("nome"));
+            produto.setPreco(rs.getDouble("preco"));
+            produto.setQuantidade(rs.getInt("quantidade"));
+            return produto;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return null;
+}
+
+
+    public void reduzirQuantidade(String nome, int quantidade) {
+        Produto produto = buscarPorNome(nome);
+        if (produto != null) {
+            produto.setQuantidade(produto.getQuantidade() - quantidade);
+        }
+    }
+    public void atualizarQuantidade(int id, int novaQuantidade) {
+    String sql = "UPDATE Produto SET quantidade = ? WHERE id = ?";
+
+    try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, novaQuantidade);
+        stmt.setInt(2, id);
+        stmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
 }

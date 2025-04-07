@@ -21,11 +21,17 @@ public class Carrinho extends javax.swing.JFrame {
     /**
      * Creates new form Carrinho
      */
+    private Carrinho carrinho;
+    private ProdutoDao produtoDao = new ProdutoDao();
+    private Pedidos telaPedidos;
     public Carrinho() {
+  
+        this.produtoDao = new ProdutoDao();
         initComponents();
-        carregarProdutos();
+        //carregarProdutos();
         DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
         modelo.setRowCount(0);
+        
     }
 
     /**
@@ -46,11 +52,9 @@ public class Carrinho extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnFinalizar = new javax.swing.JButton();
         lblTotal = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        cmbProduto = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
         btnVerPedidos = new javax.swing.JButton();
         btnCardapio = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -96,20 +100,6 @@ public class Carrinho extends javax.swing.JFrame {
         lblTotal.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lblTotal.setText("R$ 00,00");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel5.setText("Produto:");
-
-        cmbProduto.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        cmbProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jButton3.setText("Pedir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         btnVerPedidos.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnVerPedidos.setText("Ver Pedidos");
         btnVerPedidos.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +113,14 @@ public class Carrinho extends javax.swing.JFrame {
         btnCardapio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCardapioActionPerformed(evt);
+            }
+        });
+
+        btnFechar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnFechar.setText("Finalizar Comanda");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
             }
         });
 
@@ -140,22 +138,15 @@ public class Carrinho extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jButton1)
-                                    .addGap(97, 97, 97)
-                                    .addComponent(btnFinalizar))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3)
                             .addComponent(btnVerPedidos)
-                            .addComponent(btnCardapio))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                            .addComponent(btnCardapio)
+                            .addComponent(btnFinalizar)
+                            .addComponent(jButton1)
+                            .addComponent(btnFechar))))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,23 +157,20 @@ public class Carrinho extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cmbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCardapio)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btnVerPedidos)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCardapio)))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFinalizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFechar)))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblTotal))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnFinalizar)
-                    .addComponent(btnVerPedidos))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,45 +180,6 @@ public class Carrinho extends javax.swing.JFrame {
     DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
     modelo.setRowCount(0); // Remove todas as linhas
     lblTotal.setText("R$ 00,00");    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String nomeProduto = cmbProduto.getSelectedItem().toString();
-        
-    ProdutoDao pDao = new ProdutoDao();
-    Produto p = pDao.carregarNome(nomeProduto);
-
-    if (p != null && p.getQuantidade() >= 1) {
-        DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
-        boolean itemExiste = false;
-
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            String nomeNaTabela = modelo.getValueAt(i, 0).toString();
-
-            if (nomeNaTabela.equals(nomeProduto)) {
-                // Já existe na tabela, então incrementa a quantidade
-                int quantidadeAtual = Integer.parseInt(modelo.getValueAt(i, 1).toString());
-                int novaQuantidade = quantidadeAtual + 1;
-                double novoValor = p.getPreco() * novaQuantidade;
-
-                modelo.setValueAt(novaQuantidade, i, 1);
-                modelo.setValueAt(String.format("R$ %.2f", novoValor), i, 2);
-
-                itemExiste = true;
-                break;
-            }
-        }
-
-        // Se não existe ainda, adiciona
-        if (!itemExiste) {
-            modelo.addRow(new Object[]{nomeProduto, 1, String.format("R$ %.2f", p.getPreco())});
-        }
-
-        atualizarValorTotal();
-
-    } else {
-        JOptionPane.showMessageDialog(this, "Produto não disponível ou fora de estoque.");
-    }
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
@@ -242,9 +191,26 @@ public class Carrinho extends javax.swing.JFrame {
 
         double valorTotal = 0.0;
         ArrayList<Produto> produtosDoPedido = new ArrayList<>();
-
         ProdutoDao pDao = new ProdutoDao();
 
+        // Verifica se todos os produtos têm estoque suficiente
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            String nomeProduto = modelo.getValueAt(i, 0).toString();
+            int quantidadePedido = Integer.parseInt(modelo.getValueAt(i, 1).toString());
+
+            Produto p = pDao.carregarNome(nomeProduto);
+            if (p != null) {
+                if (quantidadePedido > p.getQuantidade()) {
+                    JOptionPane.showMessageDialog(this, "Estoque insuficiente para: " + nomeProduto);
+                    return; // Interrompe se não tiver estoque
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Produto não encontrado: " + nomeProduto);
+                return;
+            }
+        }
+
+        // Tudo certo, agora processa o pedido
         for (int i = 0; i < modelo.getRowCount(); i++) {
             String nomeProduto = modelo.getValueAt(i, 0).toString();
             int quantidade = Integer.parseInt(modelo.getValueAt(i, 1).toString());
@@ -257,14 +223,17 @@ public class Carrinho extends javax.swing.JFrame {
             if (p != null) {
                 p.setQuantidade(quantidade);
                 produtosDoPedido.add(p);
+
+                // Atualiza o estoque no banco
+                int novoEstoque = p.getQuantidadeBanco() - quantidade; // usamos o valor original
+                pDao.atualizarQuantidade(p.getId(), novoEstoque);
             }
         }
 
         int mesa = 1;
         Pedido pedido = new Pedido(valorTotal, mesa, produtosDoPedido);
-
         PedidoDao dao = new PedidoDao();
-        dao.inserir(pedido); // Aqui você pode estender o método para salvar os produtos também
+        dao.inserir(pedido);
 
         JOptionPane.showMessageDialog(this, "Pedido finalizado com sucesso!");
 
@@ -273,12 +242,35 @@ public class Carrinho extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPedidosActionPerformed
-        new Pedidos().setVisible(true);
+        if (telaPedidos == null || !telaPedidos.isDisplayable()) {
+            telaPedidos = new Pedidos();
+        }
+        telaPedidos.setVisible(true);
     }//GEN-LAST:event_btnVerPedidosActionPerformed
 
     private void btnCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCardapioActionPerformed
-        new Cardapio().setVisible(true);
+        new Cardapio(this, produtoDao).setVisible(true);
     }//GEN-LAST:event_btnCardapioActionPerformed
+
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        int mesa = 1; // ou obtenha de uma variável/dado da interface
+
+    int opcao = JOptionPane.showConfirmDialog(this, 
+        "Tem certeza que deseja fechar a comanda da mesa " + mesa + "?", 
+        "Fechar Comanda", 
+        JOptionPane.YES_NO_OPTION);
+
+    if (opcao == JOptionPane.YES_OPTION) {
+        PedidoDao dao = new PedidoDao();
+        dao.removerPedidosPorMesa(mesa);
+
+        JOptionPane.showMessageDialog(this, "Comanda da mesa " + mesa + " foi fechada com sucesso!");
+        
+        if (telaPedidos != null) {
+            telaPedidos.limparTabela();
+        }       
+    }
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,27 +318,35 @@ public class Carrinho extends javax.swing.JFrame {
         lblTotal.setText(String.format("R$ %.2f", total));
     }
 
-    private void carregarProdutos() {
-        ProdutoDao pDao = new ProdutoDao();
-        ArrayList<Produto> produtos = pDao.carregarTodos();
-
-        cmbProduto.removeAllItems(); // Limpa os itens anteriores para evitar duplicatas
-
-        for (Produto p : produtos) {
-            cmbProduto.addItem(p.getNome()); // Adiciona apenas o nome do produto ao ComboBox
+    
+    public  void adicionarItemTabela(String nomeProduto, int quantidade, double precoUnitario) {
+    DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
+    
+    // Verifica se o item já existe
+    for (int i = 0; i < modelo.getRowCount(); i++) {
+        if (modelo.getValueAt(i, 0).equals(nomeProduto)) {
+            int qtdAtual = (int) modelo.getValueAt(i, 1);
+            modelo.setValueAt(qtdAtual + quantidade, i, 1);
+            modelo.setValueAt((qtdAtual + quantidade) * precoUnitario, i, 2);
+            atualizarValorTotal();
+            return;
         }
+    }
+
+    // Se não existe, adiciona novo
+    modelo.addRow(new Object[]{nomeProduto, quantidade, quantidade * precoUnitario});
+    atualizarValorTotal();
 }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCardapio;
+    private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnVerPedidos;
-    private javax.swing.JComboBox<String> cmbProduto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -11,8 +11,7 @@ import java.sql.Connection;
 /**
  *
  * @author laboratorio
- */
-public class Conexao {
+ */public class Conexao {
     private static final String URL = "jdbc:mysql://localhost:3306/SistemaPedidos";
     private static final String USUARIO = "root";
     private static final String SENHA = "1234"; // Ajuste conforme sua senha do MySQL

@@ -165,4 +165,20 @@ public class PedidoDao implements PedidoRepository {
         return pedidos;
 
     }
+    
+    public void removerPedidosPorMesa(int mesa) {
+    String sql = "DELETE FROM pedido WHERE mesa = ?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, mesa);
+        stmt.executeUpdate();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
 }

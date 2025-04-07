@@ -22,6 +22,7 @@ public class Pedidos extends javax.swing.JFrame {
     public Pedidos() {
         initComponents();
         jButton1ActionPerformed(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -154,6 +155,10 @@ public class Pedidos extends javax.swing.JFrame {
             }
         });
     }
+    public void limparTabela() {
+    DefaultTableModel modelo = (DefaultTableModel) tblPedidos.getModel();
+    modelo.setRowCount(0);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

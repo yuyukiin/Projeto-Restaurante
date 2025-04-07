@@ -4,14 +4,18 @@
  */
 package trabrestaurante;
 
+import dao.ProdutoDao;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import modelo.Produto;
+import trabrestaurante.Carrinho;
 
 /**
  *
@@ -22,9 +26,13 @@ public class Cardapio extends javax.swing.JFrame {
     /**
      * Creates new form Cardapio
      */
-    public Cardapio() {
+    private ProdutoDao produtoDao;
+    private Carrinho carrinho;
+    public Cardapio(Carrinho carrinho, ProdutoDao produtoDao) {
+        this.carrinho = carrinho;
+        this.produtoDao = produtoDao; 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
+        
 
     // Painel principal com BoxLayout na vertical
     JPanel painelPrincipal = new JPanel();
@@ -53,7 +61,7 @@ public class Cardapio extends javax.swing.JFrame {
     setLocationRelativeTo(null); // centraliza
         
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +79,7 @@ public class Cardapio extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +107,9 @@ public class Cardapio extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\podes\\Downloads\\Bolo.png")); // NOI18N
         jLabel8.setText("jLabel8");
 
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jButton1.setText("+");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,7 +123,10 @@ public class Cardapio extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
@@ -125,7 +140,9 @@ public class Cardapio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(0, 0, 0)
@@ -172,11 +189,11 @@ public class Cardapio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Cardapio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cardapio().setVisible(true);
+                //new Cardapio().setVisible(true);
             }
         });
     }
@@ -188,33 +205,60 @@ public class Cardapio extends javax.swing.JFrame {
 }
 
     private JPanel criarItemCardapio(String caminhoImagem, String nomeProduto) {
-    String descricao = obterDescricaoProduto(nomeProduto);
-
     JPanel itemPanel = new JPanel();
     itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.X_AXIS));
     itemPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-    // Imagem redimensionada
-    JLabel imagemLabel = new JLabel(redimensionarImagem(caminhoImagem, 150, 100));
-    imagemLabel.setAlignmentY(Component.TOP_ALIGNMENT);
+    JLabel imagemLabel = new JLabel(redimensionarImagem(caminhoImagem, 100, 75));
 
-    // Painel de texto (nome + descrição)
+    // Painel com nome e descrição
     JPanel textoPanel = new JPanel();
     textoPanel.setLayout(new BoxLayout(textoPanel, BoxLayout.Y_AXIS));
-    textoPanel.setAlignmentY(Component.TOP_ALIGNMENT);
-
     JLabel nomeLabel = new JLabel("<html><b>" + nomeProduto + "</b></html>");
-    JLabel descricaoLabel = new JLabel("<html><i>" + descricao + "</i></html>");
-
+    JLabel descLabel = new JLabel("<html><i>" + obterDescricaoProduto(nomeProduto) + "</i></html>");
     textoPanel.add(nomeLabel);
-    textoPanel.add(descricaoLabel);
+    textoPanel.add(descLabel);
+
+    // Botão de adicionar
+    javax.swing.JButton btnAdd = new javax.swing.JButton("+");
 
     itemPanel.add(imagemLabel);
-    itemPanel.add(Box.createHorizontalStrut(10)); // espaço entre imagem e texto
+    itemPanel.add(javax.swing.Box.createHorizontalStrut(10)); // espaço entre imagem e texto
     itemPanel.add(textoPanel);
-
+    itemPanel.add(javax.swing.Box.createHorizontalGlue()); // empurra o botão pra direita
+    itemPanel.add(btnAdd);
+    
+    btnAdd.addActionListener(e -> {
+    Produto produto = produtoDao.buscarPorNome(nomeProduto);
+    if (produto != null && produto.getQuantidade() > 0) {
+        carrinho.adicionarItemTabela(produto.getNome(), 1, produto.getPreco());
+        produtoDao.reduzirQuantidade(produto.getNome(), 1);
+    } else {
+        JOptionPane.showMessageDialog(this, "Estoque esgotado para: " + nomeProduto, "Estoque insuficiente", JOptionPane.WARNING_MESSAGE);
+    }
+});
     return itemPanel;
 }
+    
+    private void adicionarAoCarrinho(String nomeProduto) {
+    System.out.println("Adicionando ao carrinho: " + nomeProduto);
+    // Aqui você pode chamar o método real do seu carrinho
+    }
+
+    private double obterPrecoProduto(String nomeProduto) {
+    return switch (nomeProduto) {
+        case "Hamburger Simples" -> 15.0;
+        case "Hamburger Vegano" -> 17.0;
+        case "Hamburger Cheddar" -> 18.0;
+        case "Hamburger Turbo" -> 20.0;
+        case "Refrigerante 600ml" -> 6.0;
+        case "Refrigerante Zero" -> 6.0;
+        case "Sorvete" -> 8.0;
+        case "Bolo Brigadeiro" -> 9.0;
+        default -> 10.0;
+    };
+}
+    
     private String obterDescricaoProduto(String nomeProduto) {
     switch (nomeProduto) {
         case "Hamburger Simples":
@@ -240,6 +284,7 @@ public class Cardapio extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
