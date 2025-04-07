@@ -1,10 +1,28 @@
-# Projeto Restaurante
+# 🍽️ Sistema de Pedidos com Interface Gráfica (Java Swing + MySQL)
 
-breve explicação como fiz
+Este projeto foi desenvolvido como parte da disciplina de **Projeto de Software**, com o objetivo de demonstrar a aplicação prática de **diagramas UML** — incluindo **Diagrama de Classes** e **Diagrama de Sequência** — na implementação de um sistema para gerenciamento de pedidos em um restaurante.
+
+A aplicação utiliza **Java** com **interface gráfica (Swing)** e realiza a persistência dos dados em um banco de dados **MySQL**. Também inclui uma versão com persistência em arquivo CSV.
 
 ---
 
-## ✨ Funcionalidade Principal
+## 🛠️ Funcionalidades
+
+### 👨‍💼 Administrador
+- Cadastrar Itens
+- Editar Itens
+- Excluir Itens
+- Visualizar Pedidos
+
+### 🧑‍🍽️ Cliente
+- Adicionar Itens ao Carrinho
+- Realizar Pedidos
+- Finalizar Pedidos
+- Remover Itens do Carrinho
+
+---
+
+## ✨ Funcionalidade Principal (Versão CSV)
 
 - Cadastro de produto com os campos:
   - Nome
@@ -18,80 +36,138 @@ breve explicação como fiz
 
 ## 🧱 Estrutura do Projeto
 
-- `Produto`: classe modelo que representa o produto
-- `ProdutoDAO`: responsável por salvar e carregar os dados do arquivo CSV
-- `PedidoForm`: interface gráfica para entrada dos dados
+### 📦 `conexao`
+- `Conexao.java`: Classe responsável pela conexão com o banco de dados.
+
+### 📦 `dao`
+- `PedidoDao.java`: Responsável pelas operações de acesso aos dados dos pedidos.
+- `PedidoRepository.java`: Interface de repositório para pedidos.
+- `ProdutoDao.java`: Responsável pelas operações de acesso aos dados dos produtos.
+- `ProdutoRepository.java`: Interface de repositório para produtos.
+- `ServidorPedido.java`: Classe que lida com o gerenciamento de pedidos em um servidor.
+
+### 📦 `modelo`
+- `Pedido.java`: Representa os pedidos realizados.
+- `Produto.java`: Representa os produtos disponíveis no sistema.
+
+### 📦 `trabrestaurante`
+- `AlterarProduto.java`: Interface gráfica para alteração de produtos.
+- `Cadastro.java`: Interface gráfica para cadastro de novos itens ou usuários.
+- `Cardapio.java`: Exibe os produtos disponíveis no sistema.
+- `Carrinho.java`: Gerencia os itens selecionados pelos clientes.
+- `Main.java`: Classe principal que inicia a aplicação.
+- `Pedidos.java`: Interface gráfica para visualização e gerenciamento de pedidos.
 
 ---
 
 ## 📘 Diagrama de Classes
 
-### Astah
+> Diagramas gerados utilizando **Astah**
 
-![C - Cadastro de Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20Gerais/Diagrama%20de%20classe.png)
+### ADM  
+![C - ADM](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20Gerais/Diagrama%20de%20classe.png)
+
+### Cliente  
+![C - Cliente](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Diagrama%20de%20Classe%20Cliente.png)
 
 ---
 
 ## 🔄 Diagrama de Sequência
 
-### Astah  
-Cadastro de Produto  
-![DS - Cadastro de Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Cadastro%20Pedido.png)  
-Alterar Produto  
-![DS - Alterar Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Alterar%20Pedido.png)  
-Excluir Produto  
-![DS - Excluir Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Excluir%20Pedido.png)
+### ADM
+
+- **Cadastro de Produto**  
+  ![DS - Cadastro de Produto](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/cadastrar%20Pedido.png)
+
+- **Alterar Produto**  
+  ![DS - Alterar Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Alterar%20Pedido.png)
+
+- **Excluir Produto**  
+  ![DS - Excluir Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Excluir%20Pedido.png)
+
+- **Ver Pedidos**  
+  ![DS - Ver Pedidos](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Ver%20Pedidos.png)
+
+### Cliente
+
+- **Adicionar Pedido ao Carrinho**  
+  ![DS - Adicionar Pedido Carrinho](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Adicionar%20Pedido%20Carrinho.png)
+
+- **Realizar Pedido**  
+  ![DS - Realizar Pedido](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Realizar%20Pedido.png)
+
+- **Remover Produto do Carrinho**  
+  ![DS - Remover Produto do Carrinho](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/RetirarItem.png)
+
+- **Finalizar Pedido**  
+  ![DS - Finalizar Pedido](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Realizar%20Pedido.png)
 
 ---
 
-## ▶️ Como Executar
+## 📌 Casos de Uso
 
-### 🔁 1. Clone o repositório
+> Diagrama de caso de uso representando as interações principais dos usuários com o sistema.
+
+![DS - Casos de Uso](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/Diagrama%20de%20Caso%20de%20Uso.jpeg)
+
+---
+
+## 📌 Casos de Uso Descritivos
+
+### Caso de Uso: Cadastrar Produto
+
+- **Ator**: Administrador  
+- **Resumo**: Permite ao ADM inserir um novo produto no sistema  
+- **Pré-condições**: A interface deve estar aberta e o ADM autenticado  
+- **Fluxo Principal**:
+  1. ADM insere nome, preço, quantidade e categoria
+  2. Clica no botão "Cadastrar"
+  3. O produto é salvo no arquivo CSV
+
+> Casos de uso completos disponíveis em: [Documentação.md](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20Gerais/Documentação.md)
+
+---
+
+## 🚀 Guia de Execução do Projeto
+
+### 1. Clonando o Repositório
 
 ```bash
-git clone https://github.com/pedr0xh/Projeto-Restaurante/tree/main
+git clone https://github.com/yuyukiin/Projeto-Restaurante.git
+cd Projeto-Restaurante
 ```
 
----
+### 2. Configurando o Banco de Dados
 
-### 💻 2. Compile os arquivos `.java`
+- Crie um banco MySQL conforme a estrutura esperada pelo sistema.
+- Insira as informações de conexão no arquivo `Banco.txt`.
 
-Para compilar todos os arquivos Java (certifique-se de estar na raiz do projeto):
+### 3. Compilando os arquivos `.java`
 
 ```bash
 javac */*.java *.java
 ```
 
----
+### 4. Executando o Servidor
 
-## 🧑‍🍳 Execução para Cliente (interface Carrinho)
+```bash
+java dao.ServidorPedido
+```
 
-Se você deseja **usar como cliente para fazer pedidos**:
+### 5. Abrindo as Interfaces
 
-1. **Abra o terminal** e rode o **servidor de pedidos**:
+#### Para o Cliente:
 
-   ```bash
-   java dao.ServidorPedido
-   ```
+- A interface `Cardapio` será aberta automaticamente ao conectar com o servidor.
 
-2. **A interface gráfica do carrinho será aberta automaticamente** ao conectar um cliente.
+#### Para o Administrador:
 
-> ⚠️ Certifique-se de que a porta `5000` esteja liberada em seu sistema.
-
----
-
-## 🔐 Execução para Administrador
-
-Se você é **administrador**, pode:
-
-### ➕ Cadastrar produtos:
-
+- Cadastrar produtos:
 ```bash
 java trabrestaurante.CadastrarProduto
 ```
 
-### ✏️ Alterar produtos existentes:
-
+- Alterar produtos:
 ```bash
 java trabrestaurante.AlterarProduto
 ```
@@ -108,11 +184,17 @@ java trabrestaurante.AlterarProduto
 
 ## 🧠 Objetivos Didáticos
 
-breve explicação
+Este projeto teve como objetivo:
+
+- Aplicar conceitos de orientação a objetos na prática.
+- Relacionar diagramas UML ao código-fonte real.
+- Desenvolver aplicações com persistência em banco de dados e arquivos CSV.
+- Criar uma interface gráfica amigável utilizando Java Swing.
+- Implementar comunicação cliente-servidor via sockets.
 
 ---
 
-## 📂 Organização dos Arquivos
+## 📂 Organização dos Arquivos (Versão CSV)
 
 ```
 CadastroProdutoCSV/
@@ -133,26 +215,15 @@ CadastroProdutoCSV/
 
 ---
 
-### 🗂️ Descrição dos Diretórios e Arquivos
+## 🧩 Desafio Extra
 
-- **`Produto.java`**: Classe que representa o modelo de dados.
-- **`ProdutoForm.java`**: Interface gráfica (Swing) para entrada de dados.
-- **`ProdutoRepository.java`**: Responsável por salvar e carregar produtos do arquivo CSV.
-- **`produtos.csv`**: Arquivo onde os dados são persistidos.
-- **`LICENSE`**: Arquivo de licença MIT.
-- **`README.md`**: Este arquivo com instruções e explicações do projeto.
+Como exercício complementar, **implemente o CRUD completo**:
 
----
+- 📖 **Listar Produtos**
+- ✏️ **Atualizar Produto**
+- ❌ **Excluir Produto**
 
-## 🧩 Desafio
-
-Como exercício complementar, **projete e implemente as demais funcionalidades do CRUD (Create, Read, Update, Delete)** para produtos:
-
-- 📖 **Listar Produtos**: Leia e exiba todos os produtos cadastrados no CSV.
-- ✏️ **Atualizar Produto**: Permita alterar as informações de um produto existente.
-- ❌ **Excluir Produto**: Implemente uma forma de apagar um produto do CSV.
-
-> 💡 Lembre-se de adaptar o repositório e a interface gráfica para essas operações, sempre mantendo a separação entre lógica de apresentação e acesso a dados.
+Adapte a interface e lógica conforme necessário!
 
 ---
 
@@ -163,28 +234,14 @@ Consulte o arquivo [LICENSE](LICENSE) para mais informações.
 
 ---
 
-## 📌 Casos de Uso
+## 👤 Autores
 
-<!-- Adicione aqui a descrição detalhada dos casos de uso -->
-
----
-
-## 📌 Caso de Uso Descritivo
-
-<!-- Adicione aqui os casos de uso descritivos -->
-
----
-
-## 👤 Autor
-
-**Aluno: Yuri Alexander Costa Machado**  
-Curso de Ciência da Computação – Universidade Franciscana (UFN)
-
-📧 E-mail: yuricostamachado7@gmail.com  
+**Aluno:** Yuri Alexander Costa Machado  
+Curso: Ciência da Computação – Universidade Franciscana (UFN)  
+📧 Email: yuricostamachado7@gmail.com  
 🔗 GitHub: [@Yuyukiin](https://github.com/Yuyukiin)
 
-**Aluno: Pedro Henrique de Avila Daroda**  
-Curso de Ciência da Computação – Universidade Franciscana (UFN)
-
-📧 E-mail: podesdarodas25@gmail.com  
-🔗 GitHub: [@Pedr0xh](https://github.com/Pedr0xh)
+**Aluno:** Pedro Henrique de Avila Daroda  
+Curso: Ciência da Computação – Universidade Franciscana (UFN)  
+📧 Email: podesdarodas25@gmail.com  
+🔗 GitHub: [@pedr0xh](https://github.com/pedr0xh)
