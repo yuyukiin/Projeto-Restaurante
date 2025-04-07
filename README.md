@@ -22,16 +22,29 @@ A aplicação utiliza **Java** com **interface gráfica (Swing)** e realiza a pe
 
 ---
 
-## 🧱 Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
-- `Item.java`: Classe que representa os produtos disponíveis no sistema.
-- `Carrinho.java`: Gerencia os itens selecionados pelos clientes.
+### 📦 `conexao`
+- `Conexao.java`: Classe responsável pela conexão com o banco de dados.
+
+### 📦 `dao`
+- `PedidoDao.java`: Responsável pelas operações de acesso aos dados dos pedidos.
+- `PedidoRepository.java`: Interface de repositório para pedidos.
+- `ProdutoDao.java`: Responsável pelas operações de acesso aos dados dos produtos.
+- `ProdutoRepository.java`: Interface de repositório para produtos.
+- `ServidorPedido.java`: Classe que lida com o gerenciamento de pedidos em um servidor.
+
+### 📦 `modelo`
 - `Pedido.java`: Representa os pedidos realizados.
-- `ProdutoDAO.java`: Responsável pelas operações de acesso aos dados no banco MySQL.
-- `AdministradorView.java` e `ClienteView.java`: Interfaces gráficas principais para cada tipo de usuário.
+- `Produto.java`: Representa os produtos disponíveis no sistema.
 
-
-> 💡 Obs: Algumas nomenclaturas podem variar no seu código (como `PedidoForm`), verifique se está de acordo com o nome real dos arquivos.
+### 📦 `trabrestaurante`
+- `AlterarProduto.java`: Interface gráfica para alteração de produtos.
+- `Cadastro.java`: Interface gráfica para cadastro de novos itens ou usuários.
+- `Cardapio.java`: Exibe os produtos disponíveis no sistema.
+- `Carrinho.java`: Gerencia os itens selecionados pelos clientes.
+- `Main.java`: Classe principal que inicia a aplicação.
+- `Pedidos.java`: Interface gráfica para visualização e gerenciamento de pedidos.
 
 ---
 
