@@ -51,7 +51,7 @@ Abaixo estão os principais componentes que compõem a arquitetura do projeto:
 ### ADM
 
 - **Cadastro de Produto**  
-  ![DS - Cadastro de Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Cadastro%20Pedido.png)
+  ![DS - Cadastro de Produto](https://github.com/yuyukiin/Projeto-Restaurante/blob/main/Diagramas/cadastrar%20Pedido.png)
 
 - **Alterar Produto**  
   ![DS - Alterar Produto](https://github.com/yuyukiin/faculdade-cc/blob/main/Projeto%20de%20Software/Restaurante/Diagramas/Diagramas%20de%20Sequ%C3%AAncia/Alterar%20Pedido.png)
