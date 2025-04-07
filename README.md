@@ -95,22 +95,40 @@ A aplicação utiliza **Java** com **interface gráfica (Swing)** e realiza a pe
 
 ---
 
-## ▶️ Como Executar
+## 🚀 Guia de Execução do Projeto
 
-Para executar o sistema localmente, siga os passos abaixo:
+Siga os passos abaixo para rodar o sistema localmente:
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/yuyukiin/Projeto-Restaurante.git
-   ```
-2. Compile os arquivos `.java`:
-   ```bash
-   javac *.java
-   ```
-3. Execute a interface gráfica:
-   ```bash
-   java ProdutoForm
-   ```
+### 1. Clonando o Repositório
+
+Utilize o comando abaixo para obter o projeto:
+
+```bash
+git clone https://github.com/yuyukiin/Projeto-Restaurante.git
+```
+
+### 2. Configurando o Banco de Dados
+
+- Crie um banco MySQL conforme a estrutura esperada pelo sistema.
+- Insira as informações de conexão no arquivo `Banco.txt`.
+
+### 3. Preparando o Ambiente
+
+- Verifique se o JDK está instalado e compatível com o projeto.
+- Se necessário, atualize a versão nas configurações do projeto.
+
+### 4. Dependência Externa
+
+- Adicione o `mysql-connector` às bibliotecas (Libraries) do projeto para permitir a conexão com o banco de dados.
+
+### 5. Inicializando o Servidor
+
+- Execute a classe `ServidorPedido.java` para iniciar o backend da aplicação.
+
+### 6. Abrindo a Interface Gráfica
+
+- Para visualizar o cardápio do cliente, abra o formulário `Cardapio.form` na IDE.
+
 
 > 💡 Certifique-se de estar no diretório onde os arquivos `.java` estão salvos antes de executar os comandos acima.
 
@@ -148,7 +166,9 @@ Para executar o sistema localmente, siga os passos abaixo:
 
 **Aluno:** Pedro Henrique de Avila Daroda  
 **Curso:** Ciência da Computação – Universidade Franciscana (UFN)  
+📧 Email: Pedro.daroda@ufn.edu.br  
 🔗 GitHub: [@pedr0xh](https://github.com/pedr0xh)
+
 
 
 ---
